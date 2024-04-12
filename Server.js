@@ -35,7 +35,13 @@ const COHERE_API_KEY = process.env.COHERE_API_KEY;
 const ANTHROPIC_API_KEY = process.env.ANTHROPIC_API_KEY;
 
 
-app.use(cors());
+// app.use(cors());
+app.use(cors({
+  origin: 'https://resumeparserfe.azurewebsites.net',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
 app.use(express.json());
 
 app.use(require("./routes/user_route"));
